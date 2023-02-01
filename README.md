@@ -1,6 +1,9 @@
-# Astra Finish
+# Astral Finish
 
 The objective of this project is to make it easier for Blazblue CF players to share their lobby link with other players.
+
+## Contributors
+Huge thanks to my bro Colmopi for the icons
 
 To make it work in your machine, you'll first need to install the api dependencies:
 

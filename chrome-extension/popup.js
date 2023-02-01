@@ -1,13 +1,11 @@
 async function copyLobbyLink() {
   const steamId = document.querySelector('#steam-id').value;
   if (steamId) {
-    console.log('steamId', steamId)
     const steamLink = await fetchSteamLink(steamId);
     if (steamLink) {
       copyTextToClipboard(steamLink);
       return;
     }
-    copyTextToClipboard("Deu ruim");
     return;
   }
   alert('No steam ID informed');
@@ -36,12 +34,15 @@ async function fetchSteamLink(steamId) {
   try {
     const response = await fetch('http://localhost:8081/get-steam-link', requestOptions);
     const body = await response.json();
-    console.log(body);
     if (body.status === 200) {
       return body.message;
     }
+    if (body.error) {
+      alert(body.error);
+    }
     return false;
   } catch (error) {
+    alert(error);
     console.log(error);
   }
 }
