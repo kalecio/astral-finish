@@ -1,0 +1,8 @@
+version: '3'
+services:
+  steam-multiplayer-link-scrapper:
+    build: .
+    image: steam-multiplayer-link-scrapper:1.0
+    container_name: steam-multiplayer-link-scrapper-container
+    ports:
+      - "8081:8081"

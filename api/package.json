@@ -1,13 +1,13 @@
 {
-  "name": "webscrapper",
+  "name": "steam-multiplayer-link-scrapper",
   "version": "1.0.0",
-  "description": "",
+  "description": "Webscrapper to get the join match link from steam profiles",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
   },
-  "author": "",
+  "author": "Kalécio Santana <kalecio.santana@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
