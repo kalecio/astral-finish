@@ -2,6 +2,18 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const express = require('express');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+
+const minutesToMs = (n) => (n * 60 * 1000);
+
+const limiter = rateLimit({
+	windowMs: minutesToMs(1), // 15 minutes
+	max: 50, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  message: "Too much requests, wait a little bit."
+})
+
 const app = express();
 const port = 8081;
 const bodyParser = require("body-parser");
@@ -10,6 +22,7 @@ const router = express.Router();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(limiter);
 app.use("/", router);
 
 app.listen(port, () => {
